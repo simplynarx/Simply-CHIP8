@@ -3,7 +3,7 @@
 
 This is my first attempt at a major project written in C. The Chip-8 is known to be a great entry point for getting into emulator development. 
 
-##Documentation Used:
+### Documentation Used:
 
 https://github.com/mattmikolay/chip-8/wiki/CHIP%E2%80%908-Technical-Reference
 https://github.com/mattmikolay/chip-8/wiki/CHIP%E2%80%908-Instruction-Set

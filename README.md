@@ -1,7 +1,14 @@
 # Simply-CHIP8
 ## WIP!! Chip-8 Emulator
 
-This is my first attempt at a major project written in C. The Chip-8 is known to be a great entry point for getting into emulator development. 
+This is my first attempt at a major project written in C.
+
+### Currently Working:
+- Reading ROM files
+
+### In Progress:
+- CPU Opcodes
+- Everything else (to be updated soon)
 
 ### Documentation Used:
 

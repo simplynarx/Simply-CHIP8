@@ -1,11 +1,12 @@
 #include "rom.h"
 #include "cpu.h"
+#include "display.h"
+#include "emu.h"
 
 int main(int argc, char *argv[]){
-	//open_rom(argv[1]);
-	uint16_t a;
-	scanf("%hx", &a);
-	decode_opcode(a);
+	initalize(argv[1]);
+	//initialize_cpu(argv[1]);
+	//initialize_display();
 
 	return 0;
 }

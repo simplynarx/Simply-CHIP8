@@ -2,8 +2,22 @@
 
 #include "common.h"
 
-void decode_opcode(uint16_t opcode);
-void execute_opcode(uint16_t opcode);
+typedef struct{
+	uint8_t v0, v1, v2, v3, v4, v5, v6, v7, 
+					v8, v9, va, vb, vc, vd, ve, vf;
+} REGISTERS;
+
+typedef struct{
+	REGISTERS reg; //cpu registers
+	uint16_t i; //address register
+	uint16_t pc; //program counter
+	uint16_t sp; //stack pointer
+	uint8_t delay; //delay timer
+} CPU;
+
+void initialize_cpu(CPU *cpu);
+void decode_opcode(CPU *cpu, uint16_t opcode);
+void execute_opcode(CPU *cpu, uint16_t instruction, uint16_t opcode); 
 
 enum OPCODES{
 	OP_EXC_MACH_SUB = 0x0000, 												//Where 0x0000 == 0x0NNN, execute machine language subroutine at address NNN

@@ -1,38 +1,43 @@
 /*
- * cpu.c - 
+ * cpu.c - simulated CHIP-8 CPU and all functions associated with it
  */
 
 #include "cpu.h"
-#include <stdint.h>
-#include <stdio.h>
+#include "mem.h"
 
-typedef struct{
-	uint8_t v0, v1, v2, v3, v4, v5, v6, v7, 
-					v8, v9, va, vb, vc, vd, ve, vf;
-} REGISTERS;
+/*
+ * Function: 	initialize_cpu
+ * -------------------------
+ *
+ * Initializes the CPU for use. Stores the standard
+ * CHIP-8 font in addresses 0x050 to 0x09F in the
+ * interpreter area of memory (0x000 to 0x1FF)
+ */
+void initialize_cpu(CPU *cpu){
 
-typedef struct{
-	REGISTERS reg; //cpu registers
-	uint16_t i; //address register
-	uint16_t pc; //program counter
-	uint16_t sp; //stack pointer
-	uint8_t mem[4096]; //4kb of memory
-} CPU;
+	cpu->pc = 0x200;
 
-static CPU cpu;
+	//printf("PC before jump: %hx\n", cpu->pc);
+	//decode_opcode(cpu, 0x1A22);
+	//printf("PC after jump: %hx\n", cpu->pc);
+	//printf("V2 before set: %hx\n", cpu->reg.v2);
+	//decode_opcode(cpu, 0x602F);
+	//printf("V2 after set: %hx\n", cpu->reg.v2);
 
-void initialize_cpu(){
-	FILE *fp = fopen("font.txt", "r");
-	uint16_t i = 0x050;
-//	while(fscanf(fp, "%hhx, %hhx, %hhx, %hhx, %hhx\n", &cpu.mem[i], &cpu.mem[i++], &cpu.mem[i++], &cpu.mem[i++], &cpu.mem[i++]) == 5){
-
-//	}
 }
 
-/**
- * Decodes the opcode, determining which opcode should be executed
+/*
+ * Function: 	decode_opcode
+ * ------------------------
+ *
+ * Interprets and decodes an Opcode for execution
+ * Helper function for execute_opcode
+ *
+ * opcode: a CPU Opcode
+ *
+ * returns: the name of the Opcode to be executed
  */
-void decode_opcode(uint16_t opcode){
+void decode_opcode(CPU *cpu, uint16_t opcode){
 	switch((opcode >> 12)){
 		case 0x0:
 			switch(opcode){
@@ -40,12 +45,12 @@ void decode_opcode(uint16_t opcode){
 				case OP_RTRN: printf("OP_RTRN\n"); break;
 				default: printf("OP_EXC_MACH_SUB\n"); break;
 			} break;
-		case 0x1: printf("OP_JMP\n"); break;
+		case 0x1: printf ("OP_JMP\n"); execute_opcode(cpu, OP_JMP, opcode); break;
 		case 0x2: printf("OP_EXC_SUB\n"); break;
 		case 0x3: printf("OP_SKIP_IF_ADR_EQL\n"); break;
 		case 0x4: printf("OP_SKIP_IF_ADR_NOT_EQL\n"); break;
 		case 0x5: printf("OP_SKIP_IF_REG_EQL\n"); break;
-		case 0x6: printf("OP_STORE_VAL_ONE_REG\n"); break;
+		case 0x6: printf("OP_STORE_VAL_ONE_REG\n"); execute_opcode(cpu, OP_STORE_VAL_ONE_REG, opcode); break;
 		case 0x7: printf("OP_ADD_VAL_ONE_REG\n"); break;
 		case 0x8:
 			switch(opcode & 0x000F){
@@ -89,7 +94,13 @@ void decode_opcode(uint16_t opcode){
 	}
 }
 
-void execute_opcode(uint16_t opcode){
+/*
+ * Function: 	execute_opcode
+ * -------------------------
+ *
+ * Executes the decoded opcode
+ */
+void execute_opcode(CPU *cpu, uint16_t instruction, uint16_t opcode){
 	uint8_t n1, n2, n3, n4;
 
 	n1 = (opcode & 0xF000) >> 12;
@@ -97,4 +108,12 @@ void execute_opcode(uint16_t opcode){
 	n3 = (opcode & 0x00F0) >> 4;
 	n4 = (opcode & 0x000F);
 
+	switch(instruction){
+		case OP_JMP:
+			cpu->pc = (opcode & 0x0FFF);
+			break;
+
+	//	case OP_STORE_VAL_ONE_REG:
+	//		V(2) = (opcode & 0x00FF);
+	}
 }

@@ -1,3 +1,7 @@
+/*
+ * mem.c - contains functions related to memory manipulation
+ */
+
 #include "mem.h"
 
 void load_font(uint8_t *mem){
@@ -6,5 +10,4 @@ void load_font(uint8_t *mem){
 		mem[ii] = FONT_VAL[jj];
 		jj++;
 	}
-
 }

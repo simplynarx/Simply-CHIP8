@@ -3,24 +3,19 @@
 #include "common.h"
 
 typedef struct{
-	uint8_t v0, v1, v2, v3, v4, v5, v6, v7, 
-					v8, v9, va, vb, vc, vd, ve, vf;
-} REGISTERS;
-
-typedef struct{
-	REGISTERS reg; //cpu registers
+	uint8_t v[16]; //cpu registers
 	uint16_t i; //address register
 	uint16_t pc; //program counter
 	uint16_t sp; //stack pointer
 	uint8_t delay; //delay timer
 } CPU;
 
-void initialize_cpu(CPU *cpu);
-void decode_opcode(CPU *cpu, uint16_t opcode);
-void execute_opcode(CPU *cpu, uint16_t instruction, uint16_t opcode); 
+void initialize_cpu(CPU *cpu, uint16_t *stack, uint8_t *mem);
+void decode_opcode(CPU *cpu, uint16_t *stack, uint16_t opcode);
+void execute_opcode(CPU *cpu, uint16_t *stack, uint16_t instruction, uint16_t opcode); 
 
 enum OPCODES{
-	OP_EXC_MACH_SUB = 0x0000, 												//Where 0x0000 == 0x0NNN, execute machine language subroutine at address NNN
+//	OP_EXC_MACH_SUB = 0x0000, 												//Where 0x0000 == 0x0NNN, execute machine language subroutine at address NNN
 	OP_CLR_SCRN = 0x00E0, 														//Clear screen
 	OP_RTRN = 0x00EE, 																//Return from subroutine 
 	OP_JMP = 0x1000, 																	//Where 0x1000 == 0x1NNN, jump to address NNN
@@ -43,7 +38,7 @@ enum OPCODES{
 																											Set VF to 00 if borrow occurs, otherwise set VF to 01*/
 	OP_STORE_LEFT_SHIFTED_VAL_TWO_REG = 0x800E, 			//Where 0x800E == 0x8XYE, store the value of VY shifted left one bit in VX
 	OP_SKIP_IF_REG_NOT_EQL = 0x9000, 									//Where 0x9000 == 0x9XY0, skip following instruction if value of VX != VY
-	OP_STORE_ADR = 0xA000, 														//Where 0xA000 == 0xANNN, store memory address NNN in I (address register)
+	OP_STORE_ADR_IN_ADR_REG = 0xA000, 														//Where 0xA000 == 0xANNN, store memory address NNN in I (address register)
 	OP_JMP_PLUS_REG = 0xB000, 												//Where 0xB000 == 0xBNNN, jump to address NNN + the value in V0
 	OP_SET_RAND = 0xC000, 														//Where 0xC000 == 0xCXNN, set VX to a random number with a mask of NN
 	OP_DRAW_SPRITE = 0xD000, 													/*Where 0xD000 == 0xDXYN, draw a sprite at position (VX, VY) with N bytes of 

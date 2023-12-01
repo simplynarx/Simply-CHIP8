@@ -4,7 +4,6 @@
 #include <stdint.h>
 #define MEM_SIZE 4096
 
-static uint8_t mem[MEM_SIZE];
 
 static const uint8_t FONT_VAL[] = {
 	0xF0, 0x90, 0x90, 0x90, 0xF0, // 0

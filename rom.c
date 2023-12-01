@@ -1,23 +1,23 @@
 /*
- * rom.c - contains all info and functions related to inputting CHIP-8 rom
+ * rom.c - contains functions related to the CHIP-8 rom being loaded into the emulator
  */
 
 #include "rom.h"
 #include "mem.h"
 
 /*
- * Function: 	open_rom
+ * Function: load_rom	
  * -------------------
  *
  * Opens a CHIP-8 rom file and loads it into memory.
  * 
  * *curr_rom: a pointer to the current rom struct
- * *mem: 			a pointer to the memory bus
- * *arg: 			the rom file passed in as an argument
+ * *mem: a pointer to the memory bus
+ * *arg: the rom file passed in as an argument
  *
  * returns: false if failed to open rom file, true otherwise
  */
-bool open_rom(ROM_INFO *curr_rom, uint8_t *mem, char *arg){
+bool load_rom(ROM_INFO *curr_rom, uint8_t *mem, char *arg){
 	FILE *fp;
 
 	printf("Opening Rom: \"%s\"...\n", arg);

@@ -10,4 +10,4 @@ typedef struct{
 	uint8_t *file_data; 
 } ROM_INFO;
 
-bool open_rom(ROM_INFO *curr_rom, uint8_t *mem, char *arg);
+bool load_rom(ROM_INFO *curr_rom, uint8_t *mem, char *arg);

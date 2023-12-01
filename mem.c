@@ -10,4 +10,8 @@ void load_font(uint8_t *mem){
 		mem[ii] = FONT_VAL[jj];
 		jj++;
 	}
+
+	/*for(uint16_t ii = 0x0; ii <= MEM_SIZE; ii += 0x1){
+		printf("%02hx ", mem[ii]);
+	}*/
 }

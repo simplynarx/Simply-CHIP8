@@ -5,6 +5,7 @@
 #include "cpu.h"
 #include "mem.h"
 #include "stack.h"
+#include <stdint.h>
 
 /*
  * Function: 	initialize_cpu
@@ -16,11 +17,14 @@
  */
 void initialize_cpu(CPU *cpu, uint16_t *stack, uint8_t *mem){
 	cpu->pc = 0x200;
+	uint16_t opcode = (mem[cpu->pc] << 8) | (mem[cpu->pc + 1] & 0xFF);
 
 	do{
 		printf("Address %02hx: \t\n", cpu->pc);
-		decode_opcode(cpu, stack, mem[cpu->pc]);
+		decode_opcode(cpu, stack, opcode);
 	} while(true);
+
+	//decode_opcode(cpu, stack, opcode);
 }
 
 /*

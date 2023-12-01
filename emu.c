@@ -6,7 +6,6 @@
 #include "rom.h"
 #include "mem.h"
 #include "stack.h"
-#include <stdint.h>
 
 static ROM_INFO curr_rom;
 static CPU cpu;

@@ -1,14 +1,20 @@
 # Simply-CHIP8
-## WIP!! Chip-8 Emulator
+## WIP Chip-8 Emulator
 
 This is my first attempt at a major project written in C.
 
 ### Currently Working:
-- Reading ROM files
+- Reading rom files
+- Memory (and storing roms into memory)
+- Certain CPU opcodes (isolated)
 
 ### In Progress:
-- CPU Opcodes
-- Everything else (to be updated soon)
+- Full CPU opcode implementations
+- Working CPU cycling / timers
+- Stack
+- Display
+- Keypad Input
+- Sound
 
 ### Documentation Used:
 

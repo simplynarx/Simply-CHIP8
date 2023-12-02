@@ -3,14 +3,16 @@
  */
 
 #include "cpu.h"
+#include "display.h"
 #include "rom.h"
 #include "mem.h"
 #include "stack.h"
 
 static ROM_INFO curr_rom;
-CPU cpu;
+static CPU cpu;
 static uint8_t mem[MEM_SIZE];
 static uint16_t stack[STACK_SIZE];
+static uint32_t video_mem[DISPLAY_WIDTH * DISPLAY_HEIGHT];
 
 /*
  * Function: initalize
@@ -21,7 +23,16 @@ static uint16_t stack[STACK_SIZE];
  * *arg: the rom file passed in as an argument
  */
 void initalize(char *arg){
-	load_rom(&curr_rom, mem, arg);
+	static int display_pitch = sizeof(video_mem[0]) * DISPLAY_WIDTH;
+	static bool window_open = true;
+
+	initialize_display();
 	load_font(mem);
-	initialize_cpu(&cpu, stack, mem);
+	load_rom(&curr_rom, mem, arg);
+	cpu.pc = 0x200;
+
+	do{
+	cycle_cpu(&cpu, stack, video_mem, mem, display_pitch);
+	update_display(video_mem, display_pitch);
+	} while(window_open);
 }

@@ -30,6 +30,7 @@ void initalize(char *arg){
 	load_font(mem);
 	load_rom(&curr_rom, mem, arg);
 	cpu.pc = 0x200;
+	cpu.sp = 0x1;
 
 	do{
 	cycle_cpu(&cpu, stack, video_mem, mem, display_pitch);

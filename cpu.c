@@ -126,14 +126,17 @@ void execute_opcode(CPU *cpu, uint16_t *stack, uint32_t *video_mem, uint8_t *mem
 			cpu->pc += 0x2;
 			break;
 
+		//needs fix
 		case OP_RTRN:
 			cpu->pc = stack_pop(cpu, stack);
+			cpu->pc += 0x2;
 			break;
 
 		case OP_JMP:
 			cpu->pc = (opcode & 0x0FFF);
 			break;
 
+		//needs fix
 		case OP_EXC_SUB:
 			stack_push(cpu, stack, cpu->pc);	
 			cpu->pc = (opcode & 0x0FFF);

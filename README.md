@@ -7,7 +7,7 @@ This is my first attempt at a major project written in C.
 - Reading rom files
 - Memory (and storing roms into memory)
 - CPU Cycles
-- >50% of CPU opcodes
+- More than 50% of CPU opcodes
 - Display
 
 ### In Progress:
@@ -18,6 +18,7 @@ This is my first attempt at a major project written in C.
 
 ### Future Plans:
 - Full rewrite
+- Debug window
 
 ### Documentation Used:
 

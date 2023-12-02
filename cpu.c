@@ -56,7 +56,7 @@ void decode_opcode(CPU *cpu, uint16_t *stack, uint32_t *video_mem, uint8_t *mem,
 				case 0x0: printf("OP_STORE_VAL_TWO_REG\n"); execute_opcode(cpu, stack, video_mem, mem, OP_STORE_VAL_TWO_REG, opcode); break;
 				case 0x1: printf("OP_SET_BITWISE_OR\n"); execute_opcode(cpu, stack, video_mem, mem, OP_SET_BITWISE_OR, opcode); break;
 				case 0x2: printf("OP_SET_BITWISE_AND\n"); execute_opcode(cpu, stack, video_mem, mem, OP_SET_BITWISE_AND, opcode); break;
-				case 0x3: printf("OP_SET_BITWISE_XOR\n"); execute_opcode(cpu, stack, video_mem, mem, OP_SET_BITWISE_AND, opcode); break;
+				case 0x3: printf("OP_SET_BITWISE_XOR\n"); execute_opcode(cpu, stack, video_mem, mem, OP_SET_BITWISE_XOR, opcode); break;
 				case 0x4: printf("OP_ADD_VAL_TWO_REG\n"); execute_opcode(cpu, stack, video_mem, mem, OP_ADD_VAL_TWO_REG, opcode); break;
 				case 0x5: printf("OP_SUBTRC_TWO_REG\n"); execute_opcode(cpu, stack, video_mem, mem, OP_SUBTRC_TWO_REG, opcode); break;
 				case 0x6: printf("OP_STORE_RIGHT_SHIFTED_VAL_TWO_REG\n"); execute_opcode(cpu, stack, video_mem, mem, OP_STORE_RIGHT_SHIFTED_VAL_TWO_REG, opcode); break;
@@ -203,12 +203,13 @@ void execute_opcode(CPU *cpu, uint16_t *stack, uint32_t *video_mem, uint8_t *mem
 			break;
 
 		case OP_STORE_RIGHT_SHIFTED_VAL_TWO_REG:
-			cpu->v[n2] = cpu->v[n3];
-			shift = (cpu->v[n2] >> 8);
-			cpu->v[n2] = (cpu->v[n2] >> 8);
+			//cpu->v[n2] = cpu->v[n3];
+			//shift = (cpu->v[n2] >> 4);
+			cpu->v[n2] = (cpu->v[n2] >> 1);
 
-			if(shift == 0x1) cpu->v[0xF] = 0x1;
-			else if(shift == 0x0) cpu->v[0xF] = 0x0;
+			//if(shift == 0x1) cpu->v[0xF] = 0x1;
+			//else if(shift == 0x0) cpu->v[0xF] = 0x0;
+			cpu->v[0xF] = (cpu->v[n2] & 0x1);
 
 			cpu->pc += 0x2;
 			break;
@@ -222,13 +223,17 @@ void execute_opcode(CPU *cpu, uint16_t *stack, uint32_t *video_mem, uint8_t *mem
 			break;
 
 		case OP_STORE_LEFT_SHIFTED_VAL_TWO_REG:
-			cpu->v[n2] = cpu->v[n3];
+			/*cpu->v[n2] = cpu->v[n3];
 			shift = (cpu->v[n2] << 8);
 			cpu->v[n2] = (cpu->v[n2] << 8);
 
 			if(shift == 0x1) cpu->v[0xF] = 0x1;
 			else if(shift == 0x0) cpu->v[0xF] = 0x0;
 
+			cpu->pc += 0x2;*/
+
+			cpu->v[n2] = (cpu->v[n2] << 1);
+			cpu->v[0xF] = (cpu->v[n2] & 0x1);
 			cpu->pc += 0x2;
 			break;
 

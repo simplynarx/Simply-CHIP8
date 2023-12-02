@@ -16,11 +16,16 @@
  * *cpu: the CPU
  */
 void initialize_cpu(CPU *cpu, uint16_t *stack, uint8_t *mem){
+	uint16_t opcode;
 	cpu->pc = 0x200;
-	uint16_t opcode = (mem[cpu->pc] << 8) | (mem[cpu->pc + 1] & 0xFF);
+	/*opcode = (mem[0x200] << 8) | (mem[0x201] & 0xFF);
+	decode_opcode(cpu, stack, opcode);
+	opcode = (mem[0x202] << 8) | (mem[0x203] & 0xFF);
+	decode_opcode(cpu, stack, opcode);*/
 
 	do{
-		printf("Address %02hx: \t\n", cpu->pc);
+		//printf("Address %02hx: \t\n", cpu->pc);
+		opcode = (mem[cpu->pc] << 8) | (mem[cpu->pc + 1] & 0xFF);
 		decode_opcode(cpu, stack, opcode);
 	} while(true);
 
@@ -41,7 +46,7 @@ void decode_opcode(CPU *cpu, uint16_t *stack, uint16_t opcode){
 	switch((opcode >> 12)){
 		case 0x0:
 			switch(opcode){
-				case OP_CLR_SCRN: printf("OP_CLR_SCRN\n"); break;
+				case OP_CLR_SCRN: printf("OP_CLR_SCRN\n"); execute_opcode(cpu, stack, OP_CLR_SCRN, opcode);break;
 				case OP_RTRN: printf("OP_RTRN\n"); execute_opcode(cpu, stack, OP_RTRN, opcode); break;
 				//default: printf("OP_EXC_MACH_SUB\n"); break;
 			} break;
@@ -69,7 +74,7 @@ void decode_opcode(CPU *cpu, uint16_t *stack, uint16_t opcode){
 		case 0xA: printf("OP_STORE_ADR_IN_ADR_REG\n"); execute_opcode(cpu, stack, OP_STORE_ADR_IN_ADR_REG, opcode); break;
 		case 0xB: printf("OP_JMP_PLUS_REG\n"); break;
 		case 0xC: printf("OP_SET_RAND\n"); break;
-		case 0xD: printf("OP_DRAW_SPRITE\n"); break;
+		case 0xD: printf("OP_DRAW_SPRITE\n"); execute_opcode(cpu, stack, OP_DRAW_SPRITE, opcode); break;
 		case 0xE:
 			switch(opcode & 0x00FF){
 				case 0x9E: printf("OP_SKIP_IF_KEY_PRESSED\n"); break;
@@ -116,6 +121,12 @@ void execute_opcode(CPU *cpu, uint16_t *stack, uint16_t instruction, uint16_t op
 	n4 = (opcode & 0x000F);
 
 	switch(instruction){
+
+		//need proper implementation
+		case OP_CLR_SCRN:
+			cpu->pc += 0x2;
+			break;
+
 		case OP_RTRN:
 			cpu->pc = stack_pop(cpu, stack);
 			break;
@@ -229,6 +240,11 @@ void execute_opcode(CPU *cpu, uint16_t *stack, uint16_t instruction, uint16_t op
 
 		case OP_STORE_ADR_IN_ADR_REG:
 			cpu->i = (opcode & 0x0FFF);
+			cpu->pc += 0x2;
+			break;
+
+		//needs proper implementation
+		case OP_DRAW_SPRITE:
 			cpu->pc += 0x2;
 			break;
 	}

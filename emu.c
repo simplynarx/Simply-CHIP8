@@ -8,7 +8,7 @@
 #include "stack.h"
 
 static ROM_INFO curr_rom;
-static CPU cpu;
+CPU cpu;
 static uint8_t mem[MEM_SIZE];
 static uint16_t stack[STACK_SIZE];
 

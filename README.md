@@ -1,6 +1,8 @@
 # Simply-CHIP8
 ## A Chip-8 Interpreter/Emulator
 
+https://github.com/simplynarx/Simply-CHIP8/assets/123662551/a3a468c0-a77d-449e-854b-ced1755c0fdc
+
 This is my first attempt at a major project written in C. I've decided to write a CHIP-8 interpreter since emulation has always been an interest of mine.
 
 UPDATE: Project is now done! I've learned a lot by writing this interpreter. I will be:

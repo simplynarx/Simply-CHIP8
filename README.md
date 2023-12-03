@@ -7,7 +7,7 @@ UPDATE: Project is now done! I've learned a lot by writing this interpreter. I w
 - Doing a writeup on everything I've learned and my thinking process
 - A complete rewrite of the program, as the source code is messy
 
-#### Usage
+### Usage
 ```
 ./simply-chip8 CHIP8_PROGRAM CPU_CYCLE_DELAY_IN_MS
 ```

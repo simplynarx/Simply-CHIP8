@@ -1,5 +1,4 @@
-# Simply-CHIP8
-## A Chip-8 Interpreter/Emulator
+# Simply-CHIP8: A Chip-8 Interpreter/Emulator
 
 https://github.com/simplynarx/Simply-CHIP8/assets/123662551/a3a468c0-a77d-449e-854b-ced1755c0fdc
 

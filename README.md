@@ -9,11 +9,11 @@ This is my first attempt at a major project written in C.
 - CPU Cycles
 - All CPU Opcodes
 - Display
+- Keypad Input
 
 ### In Progress:
 - Delay timer
 - Sound timer
-- Keypad Input
 
 ### Future Plans:
 - Full rewrite

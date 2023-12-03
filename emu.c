@@ -37,6 +37,6 @@ void initalize(char *arg){
 	do{
 	usleep(3000);
 	cycle_cpu(&cpu, stack, video_mem, mem, keypad, display_pitch);
-	update_display(video_mem, display_pitch);
+	update_display(video_mem, display_pitch, keypad);
 	} while(window_open);
 }

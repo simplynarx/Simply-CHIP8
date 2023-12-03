@@ -9,4 +9,4 @@
 #define SCALE 16
 
 void initialize_display();
-void update_display(void const *buffer, int display_pitch);
+void update_display(void const *buffer, int display_pitch, bool *keypad);

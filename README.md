@@ -7,14 +7,13 @@ This is my first attempt at a major project written in C.
 - Reading rom files
 - Memory (and storing roms into memory)
 - CPU Cycles
-- More than 50% of CPU opcodes
+- All CPU Opcodes
 - Display
 
 ### In Progress:
-- Remaining CPU opcodes
 - Delay timer
-- Keypad Input
 - Sound timer
+- Keypad Input
 
 ### Future Plans:
 - Full rewrite

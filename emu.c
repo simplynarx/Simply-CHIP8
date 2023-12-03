@@ -13,6 +13,7 @@ static CPU cpu;
 static uint8_t mem[MEM_SIZE];
 static uint16_t stack[STACK_SIZE];
 static uint32_t video_mem[DISPLAY_WIDTH * DISPLAY_HEIGHT];
+static bool keypad[16];
 
 /*
  * Function: initalize
@@ -33,7 +34,7 @@ void initalize(char *arg){
 	cpu.sp = 0x1;
 
 	do{
-	cycle_cpu(&cpu, stack, video_mem, mem, display_pitch);
+	cycle_cpu(&cpu, stack, video_mem, mem, keypad, display_pitch);
 	update_display(video_mem, display_pitch);
 	} while(window_open);
 }

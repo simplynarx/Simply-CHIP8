@@ -8,11 +8,12 @@ typedef struct{
 	uint16_t pc; //program counter
 	uint16_t sp; //stack pointer
 	uint8_t delay; //delay timer
+	uint8_t sound; //sound timer
 } CPU;
 
-void cycle_cpu(CPU *cpu, uint16_t *stack, uint32_t *video_mem, uint8_t *mem, int display_pitch);
-void decode_opcode(CPU *cpu, uint16_t *stack, uint32_t *video_mem, uint8_t *mem, uint16_t opcode);
-void execute_opcode(CPU *cpu, uint16_t *stack, uint32_t *video_mem, uint8_t *mem, uint16_t instruction, uint16_t opcode); 
+void cycle_cpu(CPU *cpu, uint16_t *stack, uint32_t *video_mem, uint8_t *mem, bool *keypad, int display_pitch);
+void decode_opcode(CPU *cpu, uint16_t *stack, uint32_t *video_mem, uint8_t *mem, bool *keypad, uint16_t opcode);
+void execute_opcode(CPU *cpu, uint16_t *stack, uint32_t *video_mem, uint8_t *mem, bool *keypad, uint16_t instruction, uint16_t opcode); 
 
 enum OPCODES{
 //	OP_EXC_MACH_SUB = 0x0000, 												//Where 0x0000 == 0x0NNN, execute machine language subroutine at address NNN

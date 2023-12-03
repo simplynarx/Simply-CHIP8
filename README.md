@@ -5,9 +5,7 @@ https://github.com/simplynarx/Simply-CHIP8/assets/123662551/a3a468c0-a77d-449e-8
 
 This is my first attempt at a major project written in C. I've decided to write a CHIP-8 interpreter since emulation has always been an interest of mine.
 
-UPDATE: Project is now done! I've learned a lot by writing this interpreter. I will be:
-- Doing a writeup on everything I've learned and my thinking process
-- A complete rewrite of the program, as the source code is messy
+Update: With this project finished, I'm unsatisfied with the inconsistency of quality in the source code. A full rewrite will follow soon.
 
 ### Usage
 ```

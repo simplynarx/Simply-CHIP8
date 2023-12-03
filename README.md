@@ -1,5 +1,5 @@
 # Simply-CHIP8
-## A Chip-8 Interpreter
+## A Chip-8 Interpreter/Emulator
 
 This is my first attempt at a major project written in C. I've decided to write a CHIP-8 interpreter since emulation has always been an interest of mine.
 

@@ -47,53 +47,52 @@ void decode_opcode(CPU *cpu, uint16_t *stack, uint32_t *video_mem, uint8_t *mem,
 	switch((opcode >> 12)){
 		case 0x0:
 			switch(opcode){
-				case OP_CLR_SCRN: printf("OP_CLR_SCRN\n"); execute_opcode(cpu, stack, video_mem, mem, keypad, OP_CLR_SCRN, opcode);break;
-				case OP_RTRN: printf("OP_RTRN\n"); execute_opcode(cpu, stack, video_mem, mem, keypad, OP_RTRN, opcode); break;
-				//default: printf("OP_EXC_MACH_SUB\n"); break;
+				case OP_CLR_SCRN: execute_opcode(cpu, stack, video_mem, mem, keypad, OP_CLR_SCRN, opcode);break;
+				case OP_RTRN: execute_opcode(cpu, stack, video_mem, mem, keypad, OP_RTRN, opcode); break;
 			} break;
-		case 0x1: printf ("OP_JMP\n"); execute_opcode(cpu, stack, video_mem, mem, keypad, OP_JMP, opcode); break;
-		case 0x2: printf("OP_EXC_SUB\n"); execute_opcode(cpu, stack, video_mem, mem, keypad, OP_EXC_SUB, opcode); break;
-		case 0x3: printf("OP_SKIP_IF_ADR_EQL\n"); execute_opcode(cpu, stack, video_mem, mem, keypad, OP_SKIP_IF_ADR_EQL, opcode); break;
-		case 0x4: printf("OP_SKIP_IF_ADR_NOT_EQL\n"); execute_opcode(cpu, stack, video_mem, mem, keypad, OP_SKIP_IF_ADR_NOT_EQL, opcode); break;
-		case 0x5: printf("OP_SKIP_IF_REG_EQL\n"); execute_opcode(cpu, stack, video_mem, mem, keypad, OP_SKIP_IF_REG_EQL, opcode); break;
-		case 0x6: printf("OP_STORE_VAL_ONE_REG\n"); execute_opcode(cpu, stack, video_mem, mem, keypad, OP_STORE_VAL_ONE_REG, opcode); break;
-		case 0x7: printf("OP_ADD_VAL_ONE_REG\n"); execute_opcode(cpu, stack, video_mem, mem, keypad, OP_ADD_VAL_ONE_REG, opcode); break;
+		case 0x1: execute_opcode(cpu, stack, video_mem, mem, keypad, OP_JMP, opcode); break;
+		case 0x2: execute_opcode(cpu, stack, video_mem, mem, keypad, OP_EXC_SUB, opcode); break;
+		case 0x3: execute_opcode(cpu, stack, video_mem, mem, keypad, OP_SKIP_IF_ADR_EQL, opcode); break;
+		case 0x4: execute_opcode(cpu, stack, video_mem, mem, keypad, OP_SKIP_IF_ADR_NOT_EQL, opcode); break;
+		case 0x5: execute_opcode(cpu, stack, video_mem, mem, keypad, OP_SKIP_IF_REG_EQL, opcode); break;
+		case 0x6: execute_opcode(cpu, stack, video_mem, mem, keypad, OP_STORE_VAL_ONE_REG, opcode); break;
+		case 0x7: execute_opcode(cpu, stack, video_mem, mem, keypad, OP_ADD_VAL_ONE_REG, opcode); break;
 		case 0x8:
 			switch(opcode & 0x000F){
-				case 0x0: printf("OP_STORE_VAL_TWO_REG\n"); execute_opcode(cpu, stack, video_mem, mem, keypad, OP_STORE_VAL_TWO_REG, opcode); break;
-				case 0x1: printf("OP_SET_BITWISE_OR\n"); execute_opcode(cpu, stack, video_mem, mem, keypad, OP_SET_BITWISE_OR, opcode); break;
-				case 0x2: printf("OP_SET_BITWISE_AND\n"); execute_opcode(cpu, stack, video_mem, mem, keypad, OP_SET_BITWISE_AND, opcode); break;
-				case 0x3: printf("OP_SET_BITWISE_XOR\n"); execute_opcode(cpu, stack, video_mem, mem, keypad, OP_SET_BITWISE_XOR, opcode); break;
-				case 0x4: printf("OP_ADD_VAL_TWO_REG\n"); execute_opcode(cpu, stack, video_mem, mem, keypad, OP_ADD_VAL_TWO_REG, opcode); break;
-				case 0x5: printf("OP_SUBTRC_TWO_REG\n"); execute_opcode(cpu, stack, video_mem, mem, keypad, OP_SUBTRC_TWO_REG, opcode); break;
-				case 0x6: printf("OP_STORE_RIGHT_SHIFTED_VAL_TWO_REG\n"); execute_opcode(cpu, stack, video_mem, mem, keypad, OP_STORE_RIGHT_SHIFTED_VAL_TWO_REG, opcode); break;
-				case 0x7: printf("OP_SET_SUBTRC_TWO_REG\n"); execute_opcode(cpu, stack, video_mem, mem, keypad, OP_SET_SUBTRC_TWO_REG, opcode); break;
-				case 0xE: printf("OP_STORE_LEFT_SHIFTED_VAL_TWO_REG\n"); execute_opcode(cpu, stack, video_mem, mem, keypad, OP_STORE_LEFT_SHIFTED_VAL_TWO_REG, opcode); break;
+				case 0x0: execute_opcode(cpu, stack, video_mem, mem, keypad, OP_STORE_VAL_TWO_REG, opcode); break;
+				case 0x1: execute_opcode(cpu, stack, video_mem, mem, keypad, OP_SET_BITWISE_OR, opcode); break;
+				case 0x2: execute_opcode(cpu, stack, video_mem, mem, keypad, OP_SET_BITWISE_AND, opcode); break;
+				case 0x3: execute_opcode(cpu, stack, video_mem, mem, keypad, OP_SET_BITWISE_XOR, opcode); break;
+				case 0x4: execute_opcode(cpu, stack, video_mem, mem, keypad, OP_ADD_VAL_TWO_REG, opcode); break;
+				case 0x5: execute_opcode(cpu, stack, video_mem, mem, keypad, OP_SUBTRC_TWO_REG, opcode); break;
+				case 0x6: execute_opcode(cpu, stack, video_mem, mem, keypad, OP_STORE_RIGHT_SHIFTED_VAL_TWO_REG, opcode); break;
+				case 0x7: execute_opcode(cpu, stack, video_mem, mem, keypad, OP_SET_SUBTRC_TWO_REG, opcode); break;
+				case 0xE: execute_opcode(cpu, stack, video_mem, mem, keypad, OP_STORE_LEFT_SHIFTED_VAL_TWO_REG, opcode); break;
 				default: printf("Unknown Opcode\n"); exit(1); break;
 			} break;
-		case 0x9: printf("OP_SKIP_IF_REG_NOT_EQL\n"); execute_opcode(cpu, stack, video_mem, mem, keypad, OP_SKIP_IF_REG_NOT_EQL, opcode); break;
-		case 0xA: printf("OP_STORE_ADR_IN_ADR_REG\n"); execute_opcode(cpu, stack, video_mem, mem, keypad, OP_STORE_ADR_IN_ADR_REG, opcode); break;
-		case 0xB: printf("OP_JMP_PLUS_REG\n"); execute_opcode(cpu, stack, video_mem, mem, keypad, OP_JMP_PLUS_REG, opcode); break;
-		case 0xC: printf("OP_SET_RAND\n"); execute_opcode(cpu, stack, video_mem, mem, keypad, OP_SET_RAND, opcode); break;
-		case 0xD: printf("OP_DRAW_SPRITE\n"); execute_opcode(cpu, stack, video_mem, mem, keypad, OP_DRAW_SPRITE, opcode); break;
+		case 0x9: execute_opcode(cpu, stack, video_mem, mem, keypad, OP_SKIP_IF_REG_NOT_EQL, opcode); break;
+		case 0xA: execute_opcode(cpu, stack, video_mem, mem, keypad, OP_STORE_ADR_IN_ADR_REG, opcode); break;
+		case 0xB: execute_opcode(cpu, stack, video_mem, mem, keypad, OP_JMP_PLUS_REG, opcode); break;
+		case 0xC: execute_opcode(cpu, stack, video_mem, mem, keypad, OP_SET_RAND, opcode); break;
+		case 0xD: execute_opcode(cpu, stack, video_mem, mem, keypad, OP_DRAW_SPRITE, opcode); break;
 		case 0xE:
 			switch(opcode & 0x00FF){
-				case 0x9E: printf("OP_SKIP_IF_KEY_PRESSED\n"); execute_opcode(cpu, stack, video_mem, mem, keypad, OP_SKIP_IF_KEY_PRESSED, opcode); break;
-				case 0xA1: printf("OP_SKIP_IF_KEY_NOT_PRESSED\n"); execute_opcode(cpu, stack, video_mem, mem, keypad, OP_SKIP_IF_KEY_NOT_PRESSED, opcode); break;
+				case 0x9E: execute_opcode(cpu, stack, video_mem, mem, keypad, OP_SKIP_IF_KEY_PRESSED, opcode); break;
+				case 0xA1: execute_opcode(cpu, stack, video_mem, mem, keypad, OP_SKIP_IF_KEY_NOT_PRESSED, opcode); break;
 				default: printf("Unknown Opcode\n"); exit(1); break;
 			} break;
 		case 0xF:
 			switch(opcode & 0x00FF){
-				case 0x7: printf("OP_STORE_DELAY_VAL_IN_REG\n"); execute_opcode(cpu, stack, video_mem, mem, keypad, OP_STORE_DELAY_VAL_IN_REG, opcode); break;
-				case 0xA: printf("OP_STORE_KEYPRESS\n"); execute_opcode(cpu, stack, video_mem, mem, keypad, OP_STORE_KEYPRESS, opcode); break;
-				case 0x15: printf("OP_SET_DELAY_VAL_FROM_REG\n"); execute_opcode(cpu, stack, video_mem, mem, keypad, OP_SET_DELAY_VAL_FROM_REG, opcode); break;
-				case 0x18: printf("OP_SET_SOUND_VAL_FROM_REG\n"); execute_opcode(cpu, stack, video_mem, mem, keypad, OP_SET_SOUND_VAL_FROM_REG, opcode); break;
-				case 0x1E: printf("OP_ADD_TO_ADR_REG\n"); execute_opcode(cpu, stack, video_mem, mem, keypad, OP_ADD_TO_ADR_REG, opcode); break;
-				case 0x29: printf("OP_SET_ADR_REG_FROM_REG\n"); execute_opcode(cpu, stack, video_mem, mem, keypad, OP_SET_ADR_REG_FROM_REG, opcode); break;
-				case 0x33: printf("OP_STORE_BINCODED_DEC\n"); execute_opcode(cpu, stack, video_mem, mem, keypad, OP_STORE_BINCODED_DEC, opcode); break;
-				case 0x55: printf("OP_STORE_MULTI_REG_VALS\n"); execute_opcode(cpu, stack, video_mem, mem, keypad, OP_STORE_MULTI_REG_VALS, opcode); break;
-				case 0x65: printf("OP_FILL_MULTI_REG_VALS\n"); execute_opcode(cpu, stack, video_mem, mem, keypad, OP_FILL_MULTI_REG_VALS, opcode); break;
-				default: printf("Unknown Opcode\n"); break;
+				case 0x7: execute_opcode(cpu, stack, video_mem, mem, keypad, OP_STORE_DELAY_VAL_IN_REG, opcode); break;
+				case 0xA: execute_opcode(cpu, stack, video_mem, mem, keypad, OP_STORE_KEYPRESS, opcode); break;
+				case 0x15: execute_opcode(cpu, stack, video_mem, mem, keypad, OP_SET_DELAY_VAL_FROM_REG, opcode); break;
+				case 0x18: execute_opcode(cpu, stack, video_mem, mem, keypad, OP_SET_SOUND_VAL_FROM_REG, opcode); break;
+				case 0x1E: execute_opcode(cpu, stack, video_mem, mem, keypad, OP_ADD_TO_ADR_REG, opcode); break;
+				case 0x29: execute_opcode(cpu, stack, video_mem, mem, keypad, OP_SET_ADR_REG_FROM_REG, opcode); break;
+				case 0x33: execute_opcode(cpu, stack, video_mem, mem, keypad, OP_STORE_BINCODED_DEC, opcode); break;
+				case 0x55: execute_opcode(cpu, stack, video_mem, mem, keypad, OP_STORE_MULTI_REG_VALS, opcode); break;
+				case 0x65: execute_opcode(cpu, stack, video_mem, mem, keypad, OP_FILL_MULTI_REG_VALS, opcode); break;
+				default: printf("Unknown Opcode\n"); exit(1); break;
 			} break;
 		default:
 			printf("Unknown Opcode\n"); exit(1); break;

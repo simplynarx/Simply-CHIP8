@@ -113,8 +113,9 @@ void execute_opcode(CPU *cpu, uint16_t *stack, uint32_t *video_mem, uint8_t *mem
 	uint8_t key;
 	uint8_t val;
 
-	srandom(time(NULL));
-	uint8_t rand_num = (random() % CHAR_MAX);
+	srand(time(NULL));
+	//uint8_t rand_num = (random() % CHAR_MAX);
+	uint8_t rand_num = rand() % 0xFF;
 
 	n1 = (opcode & 0xF000) >> 12;
 	n2 = (opcode & 0x0F00) >> 8;
@@ -256,6 +257,7 @@ void execute_opcode(CPU *cpu, uint16_t *stack, uint32_t *video_mem, uint8_t *mem
 
 		case OP_SET_RAND:
 			cpu->v[n2] = rand_num & (opcode & 0x00FF);
+			cpu->pc += 0x2;
 			break;
 
 		case OP_DRAW_SPRITE:

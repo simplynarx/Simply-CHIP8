@@ -26,12 +26,11 @@ void update_display(void const *buffer, int display_pitch){
                 SDL_Quit();
                 exit(0);
                 break;
-            default:
-                SDL_UpdateTexture(texture, NULL, buffer, display_pitch);
-                SDL_RenderClear(renderer);
-                SDL_RenderCopy(renderer, texture, NULL, NULL);
-                SDL_RenderPresent(renderer);
-                break;
         } break; 
     }
+
+    SDL_UpdateTexture(texture, NULL, buffer, display_pitch);
+    SDL_RenderClear(renderer);
+    SDL_RenderCopy(renderer, texture, NULL, NULL);
+    SDL_RenderPresent(renderer);
 }

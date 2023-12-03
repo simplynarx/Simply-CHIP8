@@ -24,8 +24,9 @@ static bool keypad[16];
  * *arg: the rom file passed in as an argument
  */
 void initalize(char *arg){
-	static int display_pitch = sizeof(video_mem[0]) * DISPLAY_WIDTH;
-	static bool window_open = true;
+	int display_pitch = sizeof(video_mem[0]) * DISPLAY_WIDTH;
+	bool window_open = true;
+	int cycle_delay = 3;
 
 	initialize_display();
 	load_font(mem);
@@ -34,6 +35,7 @@ void initalize(char *arg){
 	cpu.sp = 0x1;
 
 	do{
+	usleep(3000);
 	cycle_cpu(&cpu, stack, video_mem, mem, keypad, display_pitch);
 	update_display(video_mem, display_pitch);
 	} while(window_open);

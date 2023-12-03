@@ -19,14 +19,14 @@ static bool keypad[16];
  * Function: initalize
  * -------------------
  *
- * Initalizes all emulator functions
+ * Initalizes all emulator functions and infinitely loops
+ * while the program file is open
  *
  * *arg: the rom file passed in as an argument
+ * cycle_delay: the desired cpu cycle delay in milliseconds (ms)
  */
-void initalize(char *arg){
+void initalize(char *arg, int cycle_delay){
 	int display_pitch = sizeof(video_mem[0]) * DISPLAY_WIDTH;
-	bool window_open = true;
-	int cycle_delay = 3;
 
 	initialize_display();
 	load_font(mem);
@@ -34,9 +34,11 @@ void initalize(char *arg){
 	cpu.pc = 0x200;
 	cpu.sp = 0x1;
 
+	//infinite loop after program is loaded into memory
 	do{
-	usleep(3000);
+	usleep(cycle_delay * 1000);
+	if(cpu.delay > 0) cpu.delay--;
 	cycle_cpu(&cpu, stack, video_mem, mem, keypad, display_pitch);
 	update_display(video_mem, display_pitch, keypad);
-	} while(window_open);
+	} while(true);
 }

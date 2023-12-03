@@ -1,18 +1,30 @@
 # Simply-CHIP8
-## WIP Chip-8 Emulator
+## A Chip-8 Interpreter
 
-This is my first attempt at a major project written in C.
+This is my first attempt at a major project written in C. I've decided to write a CHIP-8 interpreter since emulation has always been an interest of mine.
+
+UPDATE: Project is now done! I've learned a lot by writing this interpreter. I will be:
+- Doing a writeup on everything I've learned and my thinking process
+- A complete rewrite of the program, as the source code is messy
+
+#### Usage
+```
+./simply-chip8 CHIP8_PROGRAM CPU_CYCLE_DELAY_IN_MS
+```
 
 ### Currently Working:
-- Reading rom files
+- Reading program files
 - Memory (and storing roms into memory)
 - CPU Cycles
 - All CPU Opcodes
 - Display
 - Keypad Input
+- Delay timer
 
 ### In Progress:
-- Delay timer
+- N/A
+
+### Not Implementing:
 - Sound timer
 
 ### Future Plans:

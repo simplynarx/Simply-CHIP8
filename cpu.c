@@ -8,18 +8,21 @@
 #include "stack.h"
 
 /*
- * Function: 	initialize_cpu
+ * Function: 	cycle_cpu
  * -------------------------
  *
- * Initializes the CPU for use. 
+ * Simulates one full CPU cycle
  *
  * *cpu: the CPU
+ * *stack: the CPU stack
+ * *video_mem: the display
+ * *mem: the address bus
+ * *keypad: the CHIP-8 keypad
+ * display_pitch: the number of bytes in a row of pixel data
  */
 void cycle_cpu(CPU *cpu, uint16_t *stack, uint32_t *video_mem, uint8_t *mem, bool *keypad, int display_pitch){
 	uint16_t opcode;
-	//cpu->pc = 0x200;
 
-		//printf("Address %02hx: \t\n", cpu->pc);
 		opcode = (mem[cpu->pc] << 8) | (mem[cpu->pc + 1] & 0xFF);
 		decode_opcode(cpu, stack, video_mem, mem, keypad, opcode);
 
@@ -34,6 +37,10 @@ void cycle_cpu(CPU *cpu, uint16_t *stack, uint32_t *video_mem, uint8_t *mem, boo
  * Passes the decoded opcode into execute_opcode
  *
  * *cpu: the CPU
+ * *stack: the CPU stack
+ * *video_mem: the display
+ * *mem: the address bus
+ * *keypad: the CHIP-8 keypad
  * opcode: a CPU Opcode
  */
 void decode_opcode(CPU *cpu, uint16_t *stack, uint32_t *video_mem, uint8_t *mem, bool *keypad, uint16_t opcode){
@@ -100,6 +107,10 @@ void decode_opcode(CPU *cpu, uint16_t *stack, uint32_t *video_mem, uint8_t *mem,
  * Executes the decoded opcode
  *
  * *cpu: the CPU
+ * *stack: the CPU stack
+ * *video_mem: the display
+ * *mem: the address bus
+ * *keypad: the CHIP-8 keypad
  * instruction: the instruction to be executed
  * 							by the CPU
  * opcode: a CPU opcode
@@ -114,7 +125,6 @@ void execute_opcode(CPU *cpu, uint16_t *stack, uint32_t *video_mem, uint8_t *mem
 	uint8_t val;
 
 	srand(time(NULL));
-	//uint8_t rand_num = (random() % CHAR_MAX);
 	uint8_t rand_num = rand() % 0xFF;
 
 	n1 = (opcode & 0xF000) >> 12;
@@ -206,12 +216,7 @@ void execute_opcode(CPU *cpu, uint16_t *stack, uint32_t *video_mem, uint8_t *mem
 			break;
 
 		case OP_STORE_RIGHT_SHIFTED_VAL_TWO_REG:
-			//cpu->v[n2] = cpu->v[n3];
-			//shift = (cpu->v[n2] >> 4);
 			cpu->v[n2] = (cpu->v[n2] >> 1);
-
-			//if(shift == 0x1) cpu->v[0xF] = 0x1;
-			//else if(shift == 0x0) cpu->v[0xF] = 0x0;
 			cpu->v[0xF] = (cpu->v[n2] & 0x1);
 
 			cpu->pc += 0x2;
@@ -226,15 +231,6 @@ void execute_opcode(CPU *cpu, uint16_t *stack, uint32_t *video_mem, uint8_t *mem
 			break;
 
 		case OP_STORE_LEFT_SHIFTED_VAL_TWO_REG:
-			/*cpu->v[n2] = cpu->v[n3];
-			shift = (cpu->v[n2] << 8);
-			cpu->v[n2] = (cpu->v[n2] << 8);
-
-			if(shift == 0x1) cpu->v[0xF] = 0x1;
-			else if(shift == 0x0) cpu->v[0xF] = 0x0;
-
-			cpu->pc += 0x2;*/
-
 			cpu->v[n2] = (cpu->v[n2] << 1);
 			cpu->v[0xF] = (cpu->v[n2] & 0x1);
 			cpu->pc += 0x2;

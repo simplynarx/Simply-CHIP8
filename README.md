@@ -41,3 +41,5 @@ https://tobiasvl.github.io/blog/write-a-chip-8-emulator
 http://www.emulator101.com/a-quick-introduction-to-a-cpu.html
 
 https://austinmorlan.com/posts/chip8_emulator/#loading-the-fonts (Draw Opcode)
+
+http://devernay.free.fr/hacks/chip8/C8TECH10.HTM#0.0

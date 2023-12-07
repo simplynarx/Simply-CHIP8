@@ -11,3 +11,5 @@ roms/
 !/V1/Makefile
 
 todo.txt
+
+.gitignore

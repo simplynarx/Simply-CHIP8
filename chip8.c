@@ -237,11 +237,6 @@ bool update_sdl(sdl_t *sdl, chip8_t *c8){
 		}
 	}
 
-	//Uncomment once draw opcode is implemented vvv
-	/*if(!SDL_UpdateTexture(sdl->texture, NULL, c8->vram, sizeof(c8->vram[0]) * DISPLAY_WIDTH)){
-		SDL_Log("ERROR: Could not update SDL Texture. %s\n", SDL_GetError());
-		return false;
-	}*/
 	SDL_UpdateTexture(sdl->texture, NULL, c8->vram, sizeof(c8->vram[0]) * DISPLAY_WIDTH);
 	SDL_RenderClear(sdl->renderer);
 	SDL_RenderCopy(sdl->renderer, sdl->texture, NULL, NULL);
@@ -438,9 +433,6 @@ u16 stack_pop(chip8_t *c8){
 
 //00E0 - clear the display
 void OP_CLS(chip8_t *c8, instr_t *instr){
-//	instr->name = "CLS";
-	printf("CLS\n");
-
 	memset(c8->vram, 0, sizeof(c8->vram));
 	c8->pc += 0x2;
 }
@@ -453,7 +445,6 @@ void OP_RET(chip8_t *c8, instr_t *instr){
 
 //1NNN - jump to address NNN
 void OP_JP_ADDR(chip8_t *c8, instr_t *instr){
-	printf("JP\n");
 	c8->pc = CURR_OP_NNN;
 }
 
@@ -483,14 +474,12 @@ void OP_SE_VX_VY(chip8_t *c8, instr_t *instr){
 
 //6XKK - store KK in VX
 void OP_LD_VX_BYTE(chip8_t *c8, instr_t *instr){
-	printf("LD_VX_BYTE\n");
 	c8->reg[CURR_OP_VX] = CURR_OP_KK;
 	c8->pc += 0x2;
 }
 
 //7XKK - add KK to VX
 void OP_ADD_VX_BYTE(chip8_t *c8, instr_t *instr){
-	printf("ADD_VX_BYTE\n");
 	c8->reg[CURR_OP_VX] += CURR_OP_KK;
 	c8->pc += 0x2;
 }
@@ -572,7 +561,6 @@ void OP_SNE_VX_VY(chip8_t *c8, instr_t *instr){
 
 //ANNN - set index register to NNN
 void OP_LD_I_ADDR(chip8_t *c8, instr_t *instr){
-	printf("LD_I_ADDR\n");
 	c8->ir = CURR_OP_NNN;
 	c8->pc += 0x2;
 }
@@ -592,7 +580,6 @@ void OP_RND_VX_BYTE(chip8_t *c8, instr_t *instr){
 //DXYN - display N-byte sprite starting at memory location I
 // 			 at (VX, VY), set VF = collision
 void OP_DRW_VX_VY_NIB(chip8_t *c8, instr_t *instr){
-	printf("DRW_VX_VY_NIB\n");
 	u8 height, x_pos, y_pos, sprite_byte, sprite_pixel;
 	u32 *screen_pixel;
 

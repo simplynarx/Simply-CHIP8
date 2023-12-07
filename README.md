@@ -11,11 +11,15 @@ Note: This is my first attempt at a major project written in C. I've decided to 
 ./simply-chip8 CHIP8_PROGRAM CPU_CYCLE_DELAY_IN_MS
 ```
 
-### Not Implementing:
+### Not Yet Implemented
+- (Proper) Delay timer
 - Sound timer
-- Super Chip-8 additional instructions
+
+### No Plans For Implementation
+- SuperChip additional instructions
 
 ### Future Plans:
+- Custom Colors
 - Debug window
 
 ### Documentation Used:

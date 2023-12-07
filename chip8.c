@@ -713,7 +713,7 @@ int main(int argc, char **argv){
 
 	while(c8.state == RUNNING){
 		usleep(atoi(argv[2]) * 1000);
-		if(c8.dt > 0) c8.dt--;
+		if(c8.dt > 0) c8.dt--; //MOVE TO CYCLE (after opcode is executed)
 		cycle_cpu(&c8_ptr, &instr_ptr);
 		if(!update_sdl(&sdl, &c8)) exit(EXIT_FAILURE);
 	}

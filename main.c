@@ -86,6 +86,7 @@ void set_config(config_t *config, int argc, char **argv){
 			if(atoi(argv[i+1]) < 60) config->instr_per_second = 200;
 		}
 
+		/* Set video scale */
 		if(strcmp(argv[i], "-s") == 0){
 			config->scale = atoi(argv[i+1]);
 			if(atoi(argv[i+1]) <= 0) config->scale = 16;

@@ -14,7 +14,7 @@ Note: This is my first attempt at a major project written in C. I've decided to 
 
 | Option | Description |
 | --- | --- |
-| -i | Specifies the number of instructions per second. If the input is less than 60, set to default value (200) |
+| -i... | Specifies the number of instructions per second. If the input is less than 60, set to default value (200) |
 
 ### Keypad Layout
 

@@ -30,6 +30,7 @@ typedef uint64_t u64;
 
 typedef enum{
 	RUNNING,
+	PAUSED,
 	QUIT
 } state_t;
 

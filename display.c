@@ -61,19 +61,20 @@ bool update_sdl(sdl_t *sdl, chip8_t *c8){
 			/* When a key is pressed / held down */
 			case SDL_KEYDOWN:
 				switch(e.key.keysym.sym){
+					case SDLK_p: c8->state = PAUSED;
           case SDLK_x: c8->keypad[0x0] = 1; break;
           case SDLK_1: c8->keypad[0x1] = 1; break;
           case SDLK_2: c8->keypad[0x2] = 1; break;
           case SDLK_3: c8->keypad[0x3] = 1; break;
           case SDLK_q: c8->keypad[0x4] = 1; break;
-          case SDLK_w: c8->keypad[0x5] = 1; break;
-          case SDLK_e: c8->keypad[0x6] = 1; break;
-          case SDLK_a: c8->keypad[0x7] = 1; break;
-          case SDLK_s: c8->keypad[0x8] = 1; break;
-          case SDLK_d: c8->keypad[0x9] = 1; break;
-          case SDLK_z: c8->keypad[0xA] = 1; break;
-          case SDLK_c: c8->keypad[0xB] = 1; break;
-          case SDLK_4: c8->keypad[0xC] = 1; break;
+          case SDLK_w: c8->keypad[0x5] = 1; break; //	| CHIP-8 Keypad | Emulator Keypad |
+          case SDLK_e: c8->keypad[0x6] = 1; break; //	-----------------------------------
+          case SDLK_a: c8->keypad[0x7] = 1; break; //	| 1 2 3 C 			| 1 2 3 4 |
+          case SDLK_s: c8->keypad[0x8] = 1; break; //	| 4 5 6 D 			| Q W E R |
+          case SDLK_d: c8->keypad[0x9] = 1; break; //	| 7 8 9 E 			| A S D F |
+          case SDLK_z: c8->keypad[0xA] = 1; break; //	| A 0 B F 			| Z X C V |
+          case SDLK_c: c8->keypad[0xB] = 1; break; 
+          case SDLK_4: c8->keypad[0xC] = 1; break; 
           case SDLK_r: c8->keypad[0xD] = 1; break;
           case SDLK_f: c8->keypad[0xE] = 1; break;
           case SDLK_v: c8->keypad[0xF] = 1; break;
@@ -81,6 +82,7 @@ bool update_sdl(sdl_t *sdl, chip8_t *c8){
 			/* When a key is released */
       case SDL_KEYUP:
         switch(e.key.keysym.sym){
+					case SDLK_o: c8->state = RUNNING;
           case SDLK_x: c8->keypad[0x0] = 0; break;
           case SDLK_1: c8->keypad[0x1] = 0; break;
           case SDLK_2: c8->keypad[0x2] = 0; break;

@@ -26,12 +26,18 @@ Simply-Chip8 is a basic Chip-8 interpreter/emulator, written from scratch in C a
 | 7 8 9 E | A S D F |
 | A 0 B F | Z X C V |
 
+### Hotkeys
+
+| Key | Function |
+| --- | --- |
+| p | Pause the emulator |
+| o | Resume the emulator |
+
 ### No Plans For Implementation
 - SuperChip additional instructions
 
 ### Future Plans:
 - Sound implementation
-- Paused emulator state
 - Custom Colors
 - Debug window
 

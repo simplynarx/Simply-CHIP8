@@ -40,6 +40,11 @@ int main(int argc, char **argv){
 
 	/* Main emulator loop */
 	while(c8.state != QUIT){
+		/* Infinite loop while paused */
+		while(c8.state == PAUSED){
+			if(!update_sdl(&sdl, &c8)) exit(EXIT_FAILURE);
+		}
+
 		start_frame = SDL_GetPerformanceCounter();
 
 		/* Run program at 60hz */

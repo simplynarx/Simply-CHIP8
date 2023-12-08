@@ -31,6 +31,7 @@ Simply-Chip8 is a basic Chip-8 interpreter/emulator, written from scratch in C a
 
 ### Future Plans:
 - Sound implementation
+- Paused emulator state
 - Custom Colors
 - Debug window
 

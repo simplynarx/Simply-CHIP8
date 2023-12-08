@@ -25,13 +25,11 @@ Note: This is my first attempt at a major project written in C. I've decided to 
 | 7 8 9 E | A S D F |
 | A 0 B F | Z X C V |
 
-### Not Yet Implemented
-- Sound timer
-
 ### No Plans For Implementation
 - SuperChip additional instructions
 
 ### Future Plans:
+- Sound implementation
 - Custom Colors
 - Debug window
 

@@ -101,7 +101,7 @@ void cycle_cpu(chip8_t **c8, instr_t **instr){
 				case 0x6: OP_SHR_VX(*c8, *instr); break;
 				case 0x7: OP_SUB_VX_VY(*c8, *instr); break;
 				case 0xE: OP_SHL_VX(*c8, *instr); break;
-				default: fprintf(stderr, "Unknown Opcode\n"); exit(1); break;
+				default: fprintf(stderr, "Unknown Opcode\n"); exit(EXIT_FAILURE); break;
 			} break;
 		case 0x9: OP_SNE_VX_VY(*c8, *instr); break;
 		case 0xA: OP_LD_I_ADDR(*c8, *instr); break;
@@ -112,7 +112,7 @@ void cycle_cpu(chip8_t **c8, instr_t **instr){
 			switch((*instr)->opcode & 0x00FF){
 				case 0x9E: OP_SKP_VX(*c8, *instr); break;
 				case 0xA1: OP_SKNP_VX(*c8, *instr); break;
-				default: fprintf(stderr, "Unknown Opcode\n"); exit(1); break;
+				default: fprintf(stderr, "Unknown Opcode\n"); exit(EXIT_FAILURE); break;
 			} break;
 		case 0xF:
 			switch((*instr)->opcode & 0x00FF){
@@ -125,10 +125,10 @@ void cycle_cpu(chip8_t **c8, instr_t **instr){
 				case 0x33: OP_LD_B_VX(*c8, *instr); break;
 				case 0x55: OP_LD_I_VX(*c8, *instr); break;
 				case 0x65: OP_LD_VX_I(*c8, *instr); break;
-				default: fprintf(stderr, "Unknown Opcode\n"); exit(1); break;
+				default: fprintf(stderr, "Unknown Opcode\n"); exit(EXIT_FAILURE); break;
 			} break;
 		default:
-			fprintf(stderr, "Unknown Opcode\n"); exit(1); break;
+			fprintf(stderr, "Unknown Opcode\n"); exit(EXIT_FAILURE); break;
 	}
 
 	/* Decrement delay timer after delay based events */

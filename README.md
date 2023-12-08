@@ -4,7 +4,7 @@
   <img src="https://github.com/simplynarx/Simply-CHIP8/assets/123662551/1207f9b9-e77c-4d44-b846-b727d8034c14" alt="animated">
 </p>
 
-Simply-Chip8 is a basic Chip-8 interpreter/emulator, written from scratch in C and built for Linux. It emulates all CPU instructions as they appeared on the COSMAC VIP!
+Simply-Chip8 is a basic Chip-8 interpreter/emulator, written from scratch in C and built for Linux. It emulates all CPU instructions as they appeared on the COSMAC VIP.
 
 ### Usage
 ```

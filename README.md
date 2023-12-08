@@ -8,8 +8,13 @@ Note: This is my first attempt at a major project written in C. I've decided to 
 
 ### Usage
 ```
-./simply-chip8 CHIP8_PROGRAM CPU_CYCLE_DELAY_IN_MS
+./simply-chip8 [FILE]... [OPTIONS]...
 ```
+### Options 
+
+| Option | Description |
+| --- | --- |
+| -i INTEGER | Specifies the number of instructions per second. If the input is less than 60, set to default value (200) |
 
 ### Keypad Layout
 
@@ -21,7 +26,6 @@ Note: This is my first attempt at a major project written in C. I've decided to 
 | A 0 B F | Z X C V |
 
 ### Not Yet Implemented
-- (Proper) Delay timer
 - Sound timer
 
 ### No Plans For Implementation

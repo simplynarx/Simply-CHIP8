@@ -131,6 +131,7 @@ void cycle_cpu(chip8_t **c8, instr_t **instr){
 			fprintf(stderr, "Unknown Opcode\n"); exit(1); break;
 	}
 
+	/* Decrement delay timer after delay based events */
 	if((*c8)->dt > 0) (*c8)->dt--;
 }
 

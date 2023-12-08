@@ -4,8 +4,6 @@ https://github.com/simplynarx/Simply-CHIP8/assets/123662551/a3a468c0-a77d-449e-8
 
 Simply-Chip8 is a basic Chip-8 interpreter/emulator, written from scratch in C and built for Linux. It emulates all CPU instructions as they appeared on the COSMAC VIP!
 
-Note: This is my first attempt at a major project written in C. I've decided to write a CHIP-8 interpreter since emulation has always been an interest of mine. A rewrite is in progress.
-
 ### Usage
 ```
 ./simply-chip8 [FILE]... [OPTIONS]...
@@ -14,7 +12,8 @@ Note: This is my first attempt at a major project written in C. I've decided to 
 
 | Option | Description |
 | --- | --- |
-| -i ... | Specifies the number of instructions per second. If the input is less than 60, set to default value (200) |
+| -i ... | Change the number of instructions per second. If the input is less than 60, set to default value (200) |
+| -s ... | Change the video scale (i.e. "8" --> 8x video scale). If the input is less than or equal to 0, set to default value (16) | 
 
 ### Keypad Layout
 

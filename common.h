@@ -22,7 +22,6 @@
 
 #define DISPLAY_WIDTH 64
 #define DISPLAY_HEIGHT 32
-#define SCALE 16
 
 typedef uint8_t u8;
 typedef uint16_t u16;
@@ -55,4 +54,5 @@ typedef struct{
 
 typedef struct{
 	int instr_per_second;
+	int scale;
 } config_t;

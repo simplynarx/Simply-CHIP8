@@ -14,13 +14,13 @@
  *
  * returns: false if SDL error, true otherwise
  */
-bool init_sdl(sdl_t *sdl){
+bool init_sdl(sdl_t *sdl, config_t *config){
 	if(SDL_Init(SDL_INIT_VIDEO) != 0){
 		SDL_Log("ERROR: Could not initalize SDL. %s\n", SDL_GetError());
 		return false;
 	}
 	
-	sdl->window = SDL_CreateWindow("Simply-CHIP8", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, DISPLAY_WIDTH * SCALE, DISPLAY_HEIGHT * SCALE, SDL_WINDOW_SHOWN);
+	sdl->window = SDL_CreateWindow("Simply-CHIP8", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, DISPLAY_WIDTH * config->scale, DISPLAY_HEIGHT * config->scale, SDL_WINDOW_SHOWN);
 	if(!sdl->window){
 		SDL_Log("ERROR: Could not create SDL Window. %s\n", SDL_GetError());
 		return false;

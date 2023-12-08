@@ -15,6 +15,6 @@ typedef struct{
 	SDL_Texture *texture;
 } sdl_t;
 
-bool init_sdl(sdl_t *sdl);
+bool init_sdl(sdl_t *sdl, config_t *config);
 bool update_sdl(sdl_t *sdl, chip8_t *c8);
 void teardown_sdl(sdl_t *sdl);

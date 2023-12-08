@@ -30,7 +30,7 @@ int main(int argc, char **argv){
 	srand(time(NULL));
 
 	/* Initalize SDL */
-	if(!init_sdl(&sdl)) exit(EXIT_FAILURE);
+	if(!init_sdl(&sdl, &config)) exit(EXIT_FAILURE);
 
 	/* Initalize CHIP-8 system */
 	init_chip8(&c8);
@@ -76,6 +76,7 @@ int main(int argc, char **argv){
 void set_config(config_t *config, int argc, char **argv){
 	/* Set defaults */
 	config->instr_per_second = 200;
+	config->scale = 16;
 
 	/* Checks for command line arguments */
 	for(int i = 1; i < argc; i++){
@@ -83,6 +84,12 @@ void set_config(config_t *config, int argc, char **argv){
 		if(strcmp(argv[i], "-i") == 0){
 			config->instr_per_second = atoi(argv[i+1]);
 			if(atoi(argv[i+1]) < 60) config->instr_per_second = 200;
-		} 
+		}
+
+		if(strcmp(argv[i], "-s") == 0){
+			config->scale = atoi(argv[i+1]);
+			if(atoi(argv[i+1]) <= 0) config->scale = 16;
+		}
+
 	}
 }
